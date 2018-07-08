@@ -1,0 +1,108 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Proyecto;
+
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+/**
+ *
+ * @author MARIELOS
+ */
+public class VentanaPrincipal extends JFrame implements ActionListener {
+    public JPanel panel;
+    public JButton btn_inicio, btn_instru,btn_user;
+    public JLabel lbl_fondo, lbl_inicio;
+    public ImageIcon img_fondo_principal,icn_inicio, icn_user, icn_indicaciones;
+ 
+    public VentanaPrincipal() {
+        //tamano de la ventana
+        this.setSize(1000, 650); //ancho y alto 
+        this.setTitle("Ghostbusters"); //titulo de la ventana
+        this.setLocationRelativeTo(null); //la ventana al centro
+        iniciarComponentes();
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE); //boton de cierre, termina la ejecucion del programa
+    }
+
+    private void iniciarComponentes() {
+        crearPaneles();
+        colocarBotones();
+        agregarEtiquetas();
+    }
+
+    private void crearPaneles() {
+        panel = new JPanel(); //creacion de un panel
+        this.getContentPane().add(panel); //agregamos el panel a la ventana
+        panel.setLayout(null);
+    }
+
+    private void agregarEtiquetas() {
+        //ETIQUETA TIPO IMAGEN
+        img_fondo_principal = new ImageIcon("src/Imagenes/Ghostbusters.jpg"); //agregando la imagen
+        lbl_fondo = new JLabel(img_fondo_principal); //agregando la etiqueta con la imgane
+        lbl_fondo.setBounds(0, 0, 1000, 607);
+        lbl_fondo.setIcon(new ImageIcon(img_fondo_principal.getImage().getScaledInstance(lbl_fondo.getWidth(), lbl_fondo.getHeight(), Image.SCALE_SMOOTH)));
+        panel.add(lbl_fondo); //agregando la etiqueta al panel    
+    }
+
+    private void colocarBotones() {
+        //BOTON DE INICIAR SECCION
+        btn_inicio = new JButton();
+        btn_inicio.setBounds(250, 450, 200, 80);
+        icn_inicio = new ImageIcon("src/Imagenes/Iniciar_Seccion.jpg");
+        btn_inicio.setIcon(new ImageIcon(icn_inicio.getImage().getScaledInstance(btn_inicio.getWidth(), btn_inicio.getHeight(), Image.SCALE_SMOOTH)));
+        btn_inicio.setContentAreaFilled(false);
+        btn_inicio.setEnabled(true);
+        btn_inicio.addActionListener(this); //eventos del boton
+        panel.add(btn_inicio);
+        
+         //BOTON DE CREAR USUARIO
+        btn_user = new JButton();
+        btn_user.setBounds(500, 450,200, 80);
+        icn_user = new ImageIcon("src/Imagenes/Crear_Seccion.jpg");
+        btn_user.setIcon(new ImageIcon(icn_user.getImage().getScaledInstance(btn_user.getWidth(), btn_user.getHeight(), Image.SCALE_SMOOTH)));
+        btn_user.setContentAreaFilled(false);
+        btn_user.setEnabled(true);
+        btn_user.addActionListener(this); //eventos del boton
+        panel.add(btn_user);
+
+        //BOTON DE INSTRUCCIONES
+        btn_instru = new JButton();
+        btn_instru.setBounds(5, 5, 200, 100);
+        icn_indicaciones = new ImageIcon("src/Imagenes/Indicaciones.png");
+        btn_instru.setIcon(new ImageIcon(icn_indicaciones.getImage().getScaledInstance(btn_instru.getWidth(), btn_instru.getHeight(), Image.SCALE_SMOOTH)));
+        btn_instru.setContentAreaFilled(false);
+        btn_instru.setEnabled(true);
+        btn_instru.addActionListener(this); //eventos del boton
+        panel.add(btn_instru);
+       
+    }
+    public void actionPerformed(ActionEvent evento) {
+        //EVENTO DEL BOTON INICIO SECCION
+        if (evento.getSource() == btn_inicio) {
+            VentanaLogin login = new VentanaLogin(); 
+            login.setVisible(true);
+            this.dispose();
+        }
+        //EVENTO DEL BOTON INSTRUCCIONES
+        if (evento.getSource() == btn_instru) {
+            VentanaInstrucciones instrucciones = new VentanaInstrucciones(); 
+            instrucciones.setVisible(true);
+            this.dispose();
+        }
+        //EVENTO DEL BOTON REGISTRARSE
+        if (evento.getSource() == btn_user) {
+            VentanaRegistro registro = new VentanaRegistro(); 
+            registro.setVisible(true);
+            this.dispose();
+        }
+    }
+}
