@@ -31,17 +31,19 @@ public class VentanaInstrucciones extends JFrame implements ActionListener{
         iniciarComponentes(); 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //boton de cierre, termina la ejecucion del programa
     }
+    //Inicializamos los componentes de las ventanas
     private void iniciarComponentes() {
         crearPaneles();
         colocarBotones();
         agregarEtiquetas();
     }
+    //Se crea el panel en donde contendra los restos de la interfaz
     private void crearPaneles() {
         panel = new JPanel(); //creacion de un panel
         this.getContentPane().add(panel); //agregamos el panel a la ventana
         panel.setLayout(null);
     }
-
+    //Se colocan las etiquetas
     private void agregarEtiquetas() {
         //ETIQUETA TIPO IMAGEN
         ImageIcon img_fondo_principal = new ImageIcon("src/Imagenes/Instrucciones2.png"); //agregando la imagen
@@ -50,6 +52,7 @@ public class VentanaInstrucciones extends JFrame implements ActionListener{
         lbl_fondo.setIcon(new ImageIcon(img_fondo_principal.getImage().getScaledInstance(lbl_fondo.getWidth(), lbl_fondo.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(lbl_fondo); //agregando la etiqueta al panel   
     }
+    //Se colocan los botones
     private void colocarBotones() {
         //BOTON DE ATRAS
         btn_regresar = new JButton();
@@ -63,6 +66,7 @@ public class VentanaInstrucciones extends JFrame implements ActionListener{
         btn_regresar.addActionListener(this); //eventos del boton
         panel.add(btn_regresar);
     }
+    //El evento del boton
     public void actionPerformed(ActionEvent evento) {
         //EVENTO DEL BOTON DE ATRAS
         if (evento.getSource() == btn_regresar) {

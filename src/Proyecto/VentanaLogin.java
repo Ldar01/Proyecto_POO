@@ -25,10 +25,12 @@ import javax.swing.JTextField;
  * @author MARIELOS
  */
 public class VentanaLogin extends JFrame implements ActionListener{
+    
     public JPanel panel;
     public JButton btn_play;
     public JTextField txt_username;
     
+    //Inicializamos los componentes basicos de la ventana
     public VentanaLogin() {
         this.setSize(1000, 650); //ancho y alto 
         this.setTitle("Login"); //titulo de la ventana
@@ -36,24 +38,27 @@ public class VentanaLogin extends JFrame implements ActionListener{
         iniciarComponentes();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //boton de cierre, termina la ejecucion del programa
     }
+    //Colocamos sus funciones
     private void iniciarComponentes() {
         crearPaneles();
         colocarBotones();
         agregarCamposTexto();
         agregarEtiquetas();
     }
+    //Agregamos el campo donde se pondra el nombre del jugador
     public void agregarCamposTexto(){
         txt_username= new JTextField(20);
         txt_username.setBounds(200, 150, 200, 40);
         panel.add(txt_username);
 
     }
-    
+    //Se crea el panel donde tendra las cosas
     private void crearPaneles() {
         panel = new JPanel(); //creacion de un panel
         this.getContentPane().add(panel); //agregamos el panel a la ventana
         panel.setLayout(null);
     }
+    //Se colocan los botones
     private void colocarBotones() {
        //BOTON DE PLAY
         btn_play = new JButton();
@@ -67,7 +72,7 @@ public class VentanaLogin extends JFrame implements ActionListener{
         btn_play.addActionListener(this); //eventos del boton
         panel.add(btn_play);
     }
-
+    //Agregaremos las etiquetas
     private void agregarEtiquetas() {
         //ETIQUETA TIPO TEXTO
         JLabel lbl_user = new JLabel("Username");
@@ -84,6 +89,7 @@ public class VentanaLogin extends JFrame implements ActionListener{
         lbl_fondo.setIcon(new ImageIcon(img_fondo_principal.getImage().getScaledInstance(lbl_fondo.getWidth(), lbl_fondo.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(lbl_fondo); //agregando la etiqueta al panel   
     }
+    //Eventos del boton
     public void actionPerformed(ActionEvent evento) {
         //EVENTO DEL BOTON PLAY
         if (evento.getSource() == btn_play) {
