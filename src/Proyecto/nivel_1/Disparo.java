@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Luisa Arevalo <00038617@uca.edu.sv>
+ * @author Carlos Ruiz
  */
 public class Disparo extends Thread {
 

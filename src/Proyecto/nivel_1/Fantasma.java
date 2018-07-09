@@ -8,8 +8,9 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Luisa Arevalo <00038617@uca.edu.sv>
+ * @author Carlos Ruiz
  */
+//Tuvo problemas para subir sus partes en git, Yo lo ayude a subirlo
 public class Fantasma extends Thread {
 
     private JLabel fantasma;

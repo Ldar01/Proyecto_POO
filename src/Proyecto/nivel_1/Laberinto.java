@@ -16,8 +16,10 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Luisa Arevalo <00038617@uca.edu.sv>
+ * @author Carlos Ruiz
  */
+
+//Tuvo problemas para subir sus partes en git, Yo lo ayude a subirlo
 public final class Laberinto extends JFrame {
 
     private JPanel panel;

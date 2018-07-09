@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Luisa Arevalo <00038617@uca.edu.sv>
+ * @author Carlos Ruiz
  */
+//Tuvo problemas para subir sus partes en git, Yo lo ayude a subirlo
 public class JugadorHilo extends Thread{
     private JLabel jugador;
     private JFrame ventana;
