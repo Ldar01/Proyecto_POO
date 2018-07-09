@@ -22,7 +22,7 @@ public class JugadorHilo extends Thread{
     private JLabel jugador;
     private JFrame ventana;
     private boolean EstaVivo;
-    private int Vida = 3;
+    private int Vida = 300;
     JPanel panel;
     private ArrayList<Fantasma> fantasmas;
 
@@ -30,6 +30,7 @@ public class JugadorHilo extends Thread{
         this.jugador = jugador;
         this.fantasmas = ghosts;
         this.panel = panel;
+        EstaVivo = true;
     }
     
     @Override
@@ -41,6 +42,8 @@ public class JugadorHilo extends Thread{
                  //Logger.getLogger(JugadorHilo.class.getName()).log(Level.SEVERE, null, ex);
              }
              if(!verificarMuerteJugador()){
+                 this.panel.remove(jugador);
+                 this.panel.updateUI();
                  this.setEstaVivo(false); 
              }
          }
@@ -49,10 +52,10 @@ public class JugadorHilo extends Thread{
     public boolean verificarMuerteJugador(){
 
         for (Fantasma fantasma : fantasmas) {
-            if(verificarColision(jugador.getX(), jugador.getY(), fantasma.getFantasma().getX(), fantasma.getFantasma().getY())){
+            if(verificarColision(this.jugador.getX(), this.jugador.getY(), fantasma.getFantasma().getX(), fantasma.getFantasma().getY())){
                 System.out.println("Huy me tocaron :'v");
                 if(this.Vida != 0){
-                    this.setVida(this.Vida--);
+                    this.setVida(this.Vida-1);
                     return true;
                 }
                
@@ -60,8 +63,8 @@ public class JugadorHilo extends Thread{
         }
         if(this.Vida == 0){
             
-            panel.remove(jugador);
-            panel.repaint();
+//            this.panel.remove(jugador);
+//            this.panel.updateUI();
             return false;
         }
        return true; 

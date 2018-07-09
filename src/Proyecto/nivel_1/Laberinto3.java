@@ -43,6 +43,8 @@ public final class Laberinto3 extends JFrame {
     private int cantFantasmas;
     int alcance;
     
+    private final JugadorHilo prueba;
+    
     public Laberinto3(int cantFantasmas, String personaje_png, int velocidad, int alcance) {
         this.alcance = alcance;
         this.velocidad = velocidad;
@@ -61,6 +63,8 @@ public final class Laberinto3 extends JFrame {
         cargarFondo();
         cargarFantasmas();
         verificarFin();
+        prueba = new JugadorHilo(personaje, fantasmas, panel);// <------------ Aqui puse el hilo
+        prueba.start();
         setResizable(false);
     }
     public void verificarFin(){
@@ -150,7 +154,7 @@ public final class Laberinto3 extends JFrame {
                     case KeyEvent.VK_A:
                         disparo = cargarImagen(raiz+"disparo.png", personaje_x, personaje_y);
                         panel.add(disparo,0);                     
-                        Disparo p = new Disparo(disparo, direccion, panel, fantasmas, alcance);
+                        Disparo p = new Disparo(disparo, direccion, panel, fantasmas, 100);
                         p.start();
                         
                         break;

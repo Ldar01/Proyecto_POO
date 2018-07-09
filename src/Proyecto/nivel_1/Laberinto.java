@@ -35,6 +35,7 @@ public final class Laberinto extends JFrame {
     private int vidas = 3;
     private JLabel personaje;
     private String personaje_png;
+    private JugadorHilo prueba;
    
     JLabel disparo;//Disparo
     private int direccion  = 0;
@@ -61,7 +62,7 @@ public final class Laberinto extends JFrame {
         cargarFondo();
         cargarFantasmas();
         verificarFin();
-        JugadorHilo prueba = new JugadorHilo(personaje, fantasmas, panel);// <------------ Aqui puse el hilo
+        prueba = new JugadorHilo(personaje, fantasmas, panel);// <------------ Aqui puse el hilo
         prueba.start(); // <------------ Inicia :v
         setResizable(false);
     }
@@ -160,7 +161,7 @@ public final class Laberinto extends JFrame {
                     case KeyEvent.VK_A:
                         disparo = cargarImagen(raiz+"disparo.png", personaje_x, personaje_y);
                         panel.add(disparo,0);                     
-                        Disparo p = new Disparo(disparo, direccion, panel, fantasmas, alcance);
+                        Disparo p = new Disparo(disparo, direccion, panel, fantasmas, 100);
                         p.start();
                         
                         break;

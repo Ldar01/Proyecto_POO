@@ -61,25 +61,15 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private void colocarBotones() {
         //BOTON DE INICIAR SECCION
         btn_inicio = new JButton();
-        btn_inicio.setBounds(250, 450, 200, 80);
-        icn_inicio = new ImageIcon("src/Imagenes/Iniciar_Seccion.jpg");
+        btn_inicio.setBounds(440, 450, 200, 80);
+        icn_inicio = new ImageIcon("src/Imagenes/Play.PNG");
         btn_inicio.setIcon(new ImageIcon(icn_inicio.getImage().getScaledInstance(btn_inicio.getWidth(), btn_inicio.getHeight(), Image.SCALE_SMOOTH)));
         btn_inicio.setContentAreaFilled(false);
         btn_inicio.setEnabled(true);
+        btn_inicio.setBorder(null);
         btn_inicio.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn_inicio.addActionListener(this); //eventos del boton
         panel.add(btn_inicio);
-        
-         //BOTON DE CREAR USUARIO
-        btn_user = new JButton();
-        btn_user.setBounds(500, 450,200, 80);
-        icn_user = new ImageIcon("src/Imagenes/Crear_Seccion.jpg");
-        btn_user.setIcon(new ImageIcon(icn_user.getImage().getScaledInstance(btn_user.getWidth(), btn_user.getHeight(), Image.SCALE_SMOOTH)));
-        btn_user.setContentAreaFilled(false);
-        btn_user.setEnabled(true);
-        btn_user.setCursor(new Cursor(Cursor.HAND_CURSOR));//Cuando este encima del boton cambia el cursor
-        btn_user.addActionListener(this); //eventos del boton
-        panel.add(btn_user);
 
         //BOTON DE INSTRUCCIONES
         btn_instru = new JButton();
@@ -107,12 +97,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             instrucciones.setVisible(true);
             this.dispose();
         }
-        //EVENTO DEL BOTON REGISTRARSE
-        if (evento.getSource() == btn_user) {
-            VentanaRegistro registro = new VentanaRegistro(); 
-            registro.setVisible(true);
-            this.dispose();
-        }
+
     }
     
     public void Sonido(){
