@@ -5,6 +5,8 @@
  */
 package Proyecto;
 
+import Proyecto.nivel_1.Laberinto;
+import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,12 +23,14 @@ import javax.swing.JPanel;
 public class VentanaPersonajes extends JFrame implements ActionListener{
     public JPanel panel;
     public JButton btn_personaje1_peter,btn_personaje2_mary;
+    private String nombre_Personaje;
 
     public VentanaPersonajes() {
         this.setSize(1000, 650); //ancho y alto 
         this.setTitle("Seleccion de Personajes"); //titulo de la ventana
         this.setLocationRelativeTo(null); //la ventana al centro
         iniciarComponentes();
+        setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //boton de cierre, termina la ejecucion del programa
     }
 
@@ -58,7 +62,9 @@ public class VentanaPersonajes extends JFrame implements ActionListener{
         btn_personaje1_peter.setIcon(new ImageIcon(icn_peter.getImage().getScaledInstance(btn_personaje1_peter.getWidth(), btn_personaje1_peter.getHeight(), Image.SCALE_SMOOTH)));
         btn_personaje1_peter.setContentAreaFilled(false);
         btn_personaje1_peter.setEnabled(true);
+        btn_personaje1_peter.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn_personaje1_peter.addActionListener(this); //eventos del boton
+        btn_personaje1_peter.setBorder(null);
         panel.add(btn_personaje1_peter);
         
         //BOTON DE PERSONAJE2
@@ -68,21 +74,28 @@ public class VentanaPersonajes extends JFrame implements ActionListener{
         btn_personaje2_mary.setIcon(new ImageIcon(icn_mary.getImage().getScaledInstance(btn_personaje2_mary.getWidth(), btn_personaje2_mary.getHeight(), Image.SCALE_SMOOTH)));
         btn_personaje2_mary.setContentAreaFilled(false);
         btn_personaje2_mary.setEnabled(true);
+        btn_personaje2_mary.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn_personaje2_mary.addActionListener(this); //eventos del boton
+        btn_personaje2_mary.setBorder(null);
         panel.add(btn_personaje2_mary);
         
     }
     public void actionPerformed(ActionEvent evento) {
         //EVENTO DEL LOS BOTONES DE LOS PERSONAJES
         if (evento.getSource() == btn_personaje1_peter) {
-           VentanaNivel1 ventana1 = new VentanaNivel1(); 
-           ventana1.setVisible(true);
+            this.nombre_Personaje = "MCNormal.png";
+           (new Laberinto(10, "MCNormal.png", 33, 20)).setVisible(true);
            this.dispose();   
         }
         if (evento.getSource() == btn_personaje2_mary) {
-           VentanaNivel1 ventana1 = new VentanaNivel1(); 
-           ventana1.setVisible(true);
+           Laberinto nivel1 = new Laberinto(10, "FCNormal.png", 33, 20);
+           this.nombre_Personaje = "FCNormal.png";
+           nivel1.setVisible(true);         
            this.dispose();   
         }
+    }
+
+    public String getNombre_Personaje() {
+        return nombre_Personaje;
     }
 }

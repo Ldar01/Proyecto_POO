@@ -5,6 +5,7 @@
  */
 package Proyecto;
 
+import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,7 +44,7 @@ public class VentanaInstrucciones extends JFrame implements ActionListener{
 
     private void agregarEtiquetas() {
         //ETIQUETA TIPO IMAGEN
-        ImageIcon img_fondo_principal = new ImageIcon("src/Imagenes/Ghostbusters2.jpg"); //agregando la imagen
+        ImageIcon img_fondo_principal = new ImageIcon("src/Imagenes/Instrucciones2.png"); //agregando la imagen
         JLabel lbl_fondo = new JLabel(img_fondo_principal); //agregando la etiqueta con la imgane
         lbl_fondo.setBounds(0, 0, 1000, 607);
         lbl_fondo.setIcon(new ImageIcon(img_fondo_principal.getImage().getScaledInstance(lbl_fondo.getWidth(), lbl_fondo.getHeight(), Image.SCALE_SMOOTH)));
@@ -57,6 +58,8 @@ public class VentanaInstrucciones extends JFrame implements ActionListener{
         btn_regresar.setIcon(new ImageIcon(ico_atras.getImage().getScaledInstance(btn_regresar.getWidth(), btn_regresar.getHeight(), Image.SCALE_SMOOTH)));
         btn_regresar.setContentAreaFilled(false);
         btn_regresar.setEnabled(true);
+        btn_regresar.setBorder(null);
+        btn_regresar.setCursor(new Cursor(Cursor.HAND_CURSOR));//Cambia la forma del cursor cuando esta encima
         btn_regresar.addActionListener(this); //eventos del boton
         panel.add(btn_regresar);
     }

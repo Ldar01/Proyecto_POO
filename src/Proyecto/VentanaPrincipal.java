@@ -5,6 +5,9 @@
  */
 package Proyecto;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +33,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null); //la ventana al centro
         iniciarComponentes();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //boton de cierre, termina la ejecucion del programa
+        Sonido();
+        setResizable(false);
     }
 
     private void iniciarComponentes() {
@@ -61,6 +66,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         btn_inicio.setIcon(new ImageIcon(icn_inicio.getImage().getScaledInstance(btn_inicio.getWidth(), btn_inicio.getHeight(), Image.SCALE_SMOOTH)));
         btn_inicio.setContentAreaFilled(false);
         btn_inicio.setEnabled(true);
+        btn_inicio.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn_inicio.addActionListener(this); //eventos del boton
         panel.add(btn_inicio);
         
@@ -71,6 +77,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         btn_user.setIcon(new ImageIcon(icn_user.getImage().getScaledInstance(btn_user.getWidth(), btn_user.getHeight(), Image.SCALE_SMOOTH)));
         btn_user.setContentAreaFilled(false);
         btn_user.setEnabled(true);
+        btn_user.setCursor(new Cursor(Cursor.HAND_CURSOR));//Cuando este encima del boton cambia el cursor
         btn_user.addActionListener(this); //eventos del boton
         panel.add(btn_user);
 
@@ -81,6 +88,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         btn_instru.setIcon(new ImageIcon(icn_indicaciones.getImage().getScaledInstance(btn_instru.getWidth(), btn_instru.getHeight(), Image.SCALE_SMOOTH)));
         btn_instru.setContentAreaFilled(false);
         btn_instru.setEnabled(true);
+        btn_instru.setBorder(null);
+        btn_instru.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn_instru.addActionListener(this); //eventos del boton
         panel.add(btn_instru);
        
@@ -104,5 +113,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             registro.setVisible(true);
             this.dispose();
         }
+    }
+    
+    public void Sonido(){
+        AudioClip audio;
+        audio = Applet.newAudioClip(getClass().getResource("Ghostbusters.wav"));
+        audio.loop();
     }
 }
