@@ -24,7 +24,7 @@ public class VentanaPersonajes extends JFrame implements ActionListener{
     public JPanel panel;
     public JButton btn_personaje1_peter,btn_personaje2_mary;
     private String nombre_Personaje;
-
+    //Donde se inicializa
     public VentanaPersonajes() {
         this.setSize(1000, 650); //ancho y alto 
         this.setTitle("Seleccion de Personajes"); //titulo de la ventana
@@ -33,19 +33,19 @@ public class VentanaPersonajes extends JFrame implements ActionListener{
         setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //boton de cierre, termina la ejecucion del programa
     }
-
+    //Iniciamos los componentes
     private void iniciarComponentes() {
         crearPaneles();
         colocarBotones();
         agregarEtiquetas();
     }
-
+    //Se crea el panel
     private void crearPaneles() {
         panel = new JPanel(); //creacion de un panel
         this.getContentPane().add(panel); //agregamos el panel a la ventana
         panel.setLayout(null);
     }
-
+    //Se agregan las etiquetas
     private void agregarEtiquetas() {
         //ETIQUETA TIPO IMAGEN
         ImageIcon img_fondo_principal = new ImageIcon("src/Imagenes/Personajes.jpg"); //agregando la imagen
@@ -54,6 +54,7 @@ public class VentanaPersonajes extends JFrame implements ActionListener{
         lbl_fondo.setIcon(new ImageIcon(img_fondo_principal.getImage().getScaledInstance(lbl_fondo.getWidth(), lbl_fondo.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(lbl_fondo); //agregando la etiqueta al panel   
     }
+    //Colocamos botones
     private void colocarBotones() {
         //BOTON DE PERSONAJE1
         btn_personaje1_peter = new JButton();
@@ -80,6 +81,7 @@ public class VentanaPersonajes extends JFrame implements ActionListener{
         panel.add(btn_personaje2_mary);
         
     }
+    //Eventos del boton
     public void actionPerformed(ActionEvent evento) {
         //EVENTO DEL LOS BOTONES DE LOS PERSONAJES
         if (evento.getSource() == btn_personaje1_peter) {

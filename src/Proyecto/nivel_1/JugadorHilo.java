@@ -35,6 +35,7 @@ public class JugadorHilo extends Thread{
     
     @Override
      public void run(){
+         //Mientras el jugador este vivo
          while(EstaVivo){
              try {
                  sleep(20);
@@ -42,18 +43,18 @@ public class JugadorHilo extends Thread{
                  //Logger.getLogger(JugadorHilo.class.getName()).log(Level.SEVERE, null, ex);
              }
              if(!verificarMuerteJugador()){
-                 this.panel.remove(jugador);
+                 this.panel.remove(jugador);//Aqui es cuando el jugador muere y es quitado de la ventana
                  this.panel.updateUI();
                  this.setEstaVivo(false); 
              }
          }
      }
-     
+     //Funcion que verifica si el jugador fue tocado
     public boolean verificarMuerteJugador(){
 
         for (Fantasma fantasma : fantasmas) {
             if(verificarColision(this.jugador.getX(), this.jugador.getY(), fantasma.getFantasma().getX(), fantasma.getFantasma().getY())){
-                System.out.println("Huy me tocaron :'v");
+                System.out.println("Huy me tocaron");
                 if(this.Vida != 0){
                     this.setVida(this.Vida-1);
                     return true;
@@ -69,15 +70,14 @@ public class JugadorHilo extends Thread{
         }
        return true; 
     }
+    //Funcion que verifica colision por medio de coordenadas
     public boolean verificarColision(int x1, int y1, int x2, int y2){
         int ancho1,ancho2,alto1,alto2;
         ancho1=ancho2=alto1=alto2=33;
-        //primer punto a
-        
-//        return bx >= ax && bx<=ax+33   ;
+
         return ((x1)-(ancho2)<=(x2) && (x1)+(ancho1)>=(x2) && (y1)-(alto2)<=(y2) && (y1)+(alto1)>=(y2));
     }
-
+    //Setters y Getters
     public boolean isVivo() {
         return EstaVivo;
     }

@@ -36,19 +36,19 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         Sonido();
         setResizable(false);
     }
-
+    //Inicializamos los componentes
     private void iniciarComponentes() {
         crearPaneles();
         colocarBotones();
         agregarEtiquetas();
     }
-
+    //Creamos el panel donde estaran las cosas
     private void crearPaneles() {
         panel = new JPanel(); //creacion de un panel
         this.getContentPane().add(panel); //agregamos el panel a la ventana
         panel.setLayout(null);
     }
-
+    //Agregamos las etiquetas
     private void agregarEtiquetas() {
         //ETIQUETA TIPO IMAGEN
         img_fondo_principal = new ImageIcon("src/Imagenes/Ghostbusters.jpg"); //agregando la imagen
@@ -57,7 +57,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         lbl_fondo.setIcon(new ImageIcon(img_fondo_principal.getImage().getScaledInstance(lbl_fondo.getWidth(), lbl_fondo.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(lbl_fondo); //agregando la etiqueta al panel    
     }
-
+    //Colocamos los botones
     private void colocarBotones() {
         //BOTON DE INICIAR SECCION
         btn_inicio = new JButton();
@@ -84,6 +84,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         panel.add(btn_instru);
        
     }
+    //Eventos del boton
     public void actionPerformed(ActionEvent evento) {
         //EVENTO DEL BOTON INICIO SECCION
         if (evento.getSource() == btn_inicio) {
@@ -99,10 +100,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         }
 
     }
-    
+    //Agregamos sonido
     public void Sonido(){
-        AudioClip audio;
-        audio = Applet.newAudioClip(getClass().getResource("Ghostbusters.wav"));
-        audio.loop();
+        AudioClip audio; //Importamos AudioClip que es una interfaz que nos permite poner sonidos
+        audio = Applet.newAudioClip(getClass().getResource("Ghostbusters.wav"));//Obtenemos de donde es el archivo
+        audio.loop();//Hacemos que se repita una y otra vez
     }
 }

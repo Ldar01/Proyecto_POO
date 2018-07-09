@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author Luisa Arevalo <00038617@uca.edu.sv>
  */
 public class FinNivelHilo extends Thread {
-
+    
     ArrayList<Fantasma> fantasmas;
     //JFrame frame;
     Laberinto lab;
@@ -29,6 +29,8 @@ public class FinNivelHilo extends Thread {
     @Override
     public void run() {
         try {
+            //Verifica si todavia hay fantasmas y si no pues termina el nivel
+            //Lo mismo para FinNivelHilo2 y FinNivelHilo3
             while (fantasmas.size() > 0) {
                 sleep(10);
             }
@@ -37,7 +39,7 @@ public class FinNivelHilo extends Thread {
         }
 
         JOptionPane.showMessageDialog(null, "Genial!, El nivel 2 te espera");
-        Laberinto2 nivel_2 = new Laberinto2(20,lab.getPersonaje_png(),33,20);
+        Laberinto2 nivel_2 = new Laberinto2(20,lab.getPersonaje_png(),33,20);//Abrimos nivel2
         nivel_2.setVisible(true);
         lab.dispose();
     }

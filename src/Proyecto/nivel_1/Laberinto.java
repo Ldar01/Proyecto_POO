@@ -43,7 +43,8 @@ public final class Laberinto extends JFrame {
     ArrayList<Fantasma> fantasmas;//Fantasma
     private int cantFantasmas;
     int alcance;
-    
+    //Constructor de laberinto que tiene como parametros la cantidad de fantasmas del nivel, el personaje seleccionado
+    //La velocidad en la que iran los fantasmas y el alcance de ellos
     public Laberinto(int cantFantasmas, String personaje_png, int velocidad, int alcance) {
         this.alcance = alcance;
         this.velocidad = velocidad;
@@ -66,10 +67,12 @@ public final class Laberinto extends JFrame {
         prueba.start(); // <------------ Inicia :v
         setResizable(false);
     }
+    //Funcion que verifica con el hilo si ya fueron asesinados todos los fantasmas
     public void verificarFin(){
         FinNivelHilo fin = new FinNivelHilo(fantasmas, this);
         fin.start();
     }
+    //Funcion que alista los fanasmas
     private void cargarFantasmas(){
         fantasmas = new ArrayList();
         
@@ -78,8 +81,9 @@ public final class Laberinto extends JFrame {
 
         }
     }
+    //Funcion que sirve para agregar a los fantasmas
     private void agregarFantasma(int x, int y){
-        Fantasma fantasma_hilo;
+        Fantasma fantasma_hilo;//El hilo del movimiento de los fantasmas
         JLabel fantasma_label = null;
         switch(en_rango(2, 2)){
             case 0: fantasma_label = cargarImagen(raiz+"arana.png", x, y); break;
@@ -93,6 +97,8 @@ public final class Laberinto extends JFrame {
         
         fantasmas.add(fantasma_hilo);
     }
+    
+    //Funcion que coloca los corazones
     private void cargarCorazones(){
         corazon1 = cargarImagen(raiz+"heart_full.png",17*lado, 1*lado);
         panel.add(corazon1);
@@ -108,6 +114,7 @@ public final class Laberinto extends JFrame {
         corazon6 = cargarImagen(raiz+"heart_empty.png",19*lado, 1*lado);
         
     }
+    //Funcion que quita los corazones llenos por corazones vacios
     private void quitarVida(){
         switch(vidas){
             case 3:
@@ -129,7 +136,7 @@ public final class Laberinto extends JFrame {
         vidas--;
     }
     
-    
+    //Eventos para mover el personaje
     private void eventoMoverPersonaje(){
         
         addKeyListener(new KeyListener() {
@@ -177,13 +184,16 @@ public final class Laberinto extends JFrame {
             }
         });
     }
+    //Muestra las coordenadas del jugador
     void mostrarCoor(){
         System.out.println(personaje_x+" - "+personaje_y);
     }
+    //Carga la imagen del personaje
     private void cargarPersonaje(){
         personaje = cargarImagen(raiz+personaje_png, personaje_x, personaje_y);
         panel.add(personaje);
     }
+    //Creamos los paneles
     private void crearPaneles() {
         panel = new JPanel(); //creacion de un panel
 //        add(panel);
@@ -192,10 +202,12 @@ public final class Laberinto extends JFrame {
 
         
     }
+    //Funcion que por medio de una matriz se llena el fondo
     public void cargarEscenario(){
         char[][] matrizElementos = cargarMatriz();
         for (int i = 0; i < matrizElementos.length; i++) {
             for (int j = 0; j < matrizElementos[0].length; j++) {
+                //Dependiendo de lo que se encuentre escrito en la matriz se iran poniendo las siguientes imagenes
                 switch(matrizElementos[i][j]){
                     case 's': panel.add(cargarImagen(raiz + "suelo_piedra.png", j * lado, i * lado)); break;
                     case 'b': panel.add(cargarImagen(raiz + "buho.png", j * lado, i * lado)); break;
@@ -213,7 +225,7 @@ public final class Laberinto extends JFrame {
             }
         }
     }
-
+    //Carga la imagen
     public JLabel cargarImagen(String ruta, int x, int y) {
         ImageIcon img = new ImageIcon(ruta); //agregando la imagen
         JLabel lbl = new JLabel(img); //agregando la etiqueta con la imgane
@@ -221,7 +233,7 @@ public final class Laberinto extends JFrame {
         lbl.setIcon(new ImageIcon(img.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH)));
         return lbl;
     }
-
+    //Matriz para el juego
     public char[][] cargarMatriz() {
         String data = ""
                 + "                      \n"
@@ -251,6 +263,8 @@ public final class Laberinto extends JFrame {
         }
         return matriz;
     }
+    
+    //Setters y Getters
 
     public JPanel getPanel() {
         return panel;
